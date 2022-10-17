@@ -1,10 +1,11 @@
-<img src="https://user-images.githubusercontent.com/51168329/159381241-c0b2b316-22de-492c-9703-23e84e860551.png">
+<img src="https://user-images.githubusercontent.com/51168329/196209350-928f191b-34d8-4b40-8b0b-8dc9a1cfa16c.png">
+
 <div align="center">
-  <a href="https://github.com/andreinaoliveira/QA-Base-Automation"><img alt="hits" src="https://hits.sh/github.com/andreinaoliveira/QA-Base-Automation.svg"/></a>
-  <a href="https://github.com/andreinaoliveira/QA-Base-Automation/graphs/commit-activity"><img src="https://img.shields.io/github/last-commit/andreinaoliveira/qa-base-automation"></a>
-  <a href="https://github.com/andreinaoliveira/QA-Base-Automation"><img src="https://img.shields.io/badge/status-complete-light"></a>
-  <a href="https://github.com/andreinaoliveira/QA-Base-Automation/stargazers"><img src="https://img.shields.io/github/stars/andreinaoliveira/QA-Base-Automation?style=social"></a>
-  <a href="https://github.com/andreinaoliveira/QA-Base-Automation/network/members"><img src="https://img.shields.io/github/forks/andreinaoliveira/QA-Base-Automation?style=social"></a>
+  <a href="https://github.com/andreinaoliveira/BDD-Base-Automation"><img alt="hits" src="https://hits.sh/github.com/andreinaoliveira/BDD-Base-Automation.svg"/></a>
+  <a href="https://github.com/andreinaoliveira/BDD-Base-Automation/graphs/commit-activity"><img src="https://img.shields.io/github/last-commit/andreinaoliveira/bdd-base-automation"></a>
+  <a href="https://github.com/andreinaoliveira/BDD-Base-Automation"><img src="https://img.shields.io/badge/status-complete-light"></a>
+  <a href="https://github.com/andreinaoliveira/BDD-Base-Automation/stargazers"><img src="https://img.shields.io/github/stars/andreinaoliveira/BDD-Base-Automation?style=social"></a>
+  <a href="https://github.com/andreinaoliveira/BDD-Base-Automation/network/members"><img src="https://img.shields.io/github/forks/andreinaoliveira/BDD-Base-Automation?style=social"></a>
   <a href="https://github.com/andreinaoliveira"><img src="https://img.shields.io/github/followers/andreinaoliveira?style=social"></a>
 </div>
 
