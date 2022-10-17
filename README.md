@@ -34,14 +34,9 @@ Para exemplificar o funcionamento da base será automatizado a tela de login do 
     - <a href="#click">Click</a>
     - <a href="#set">Set</a>
   - <a href="#-test">Test</a>
-    - <a href="#imports">Imports</a>
-    - <a href="#unittest">Unittest</a>
+    - Em andamento
 - <a href="#-cenários-de-teste">Cenários de Teste</a>
-  - <a href="#ct01---acessar-tela-de-boas-vindas">CT01 - Acessar tela de Boas Vindas</a>
-  - <a href="#ct02---acessar-tela-de-login">CT02 - Acessar tela de Login</a>
-  - <a href="#ct03---senha-inválida">CT03 - Senha Inválida</a>
-  - <a href="#ct04---usuário-inválido">CT04 - Usuário Inválido</a>
-  - <a href="#ct05---usuário-válido">CT05 - Usuário Válido</a>
+  - Em andamento
 
 
 # 💾 Instalação
@@ -59,6 +54,7 @@ git clone https://github.com/andreinaoliveira/QA-Base-Automation.git
 
 Os módulos devem ser instalados no cmd com os comandos abaixos
 ```
+pip install behave
 pip install selenium
 pip install webdriver-manager
 ```
@@ -66,31 +62,14 @@ pip install webdriver-manager
 # 🖥 Desenvolvimento
 ## 🕹 Controller
 
-### /format.py
-Contem a função titleTest() recebendo testName. Quando a função é chamada imprime o nome do teste passado por parâmetro de forma mais amigável no terminal. Essa função é chamada para cada teste do unittest localizados na pasta test.
-
-```python
-def titleTest(testName):
-    print(100 * '-')
-    print(testName.center(100))
-    print(100 * '-')
-```
-
-Exemplo da impressão:
-```
-----------------------------------------------------------------------------------------------------
-                                 CT01 - Acessar tela de Boas Vindas                                 
-----------------------------------------------------------------------------------------------------
-```
-
 ### /log.py
 
-Importa a biblioteca de loggin e formata a mensagem de log. Nesse arquivo é criado as funções debug(), info() e error(). Cada função recebe a mensagem que será enviada como log. Essas funções são chamadas em controller/webdriver.
+Importa a biblioteca de loggin e formata a mensagem de log. Nesse arquivo é criado as funções debug(), info() e error(). Cada função recebe a mensagem que será enviada como log. Essas funções são chamadas em controller/webdriver. A linha referente a basic config está por padrão comentada para evitar poluição visual no terminal. Contudo, quando houver erros, os logs de erro serão chamados.
 
 ```python
 import logging
 log_format = '%(asctime)s :: %(name)s :: %(levelname)s :: %(module)s :: %(message)s'
-logging.basicConfig(format=log_format, level=logging.INFO, filemode='w')
+#logging.basicConfig(format=log_format, level=logging.INFO, filemode='w')
 
 
 def degub(message):
@@ -287,200 +266,4 @@ As funções da página são divididas em:
 ```
 
 ## 🧪 Test
-Onde os testes de fato irão ocorrer. Após controller ser escrito suportando as instancias da página em model chega a hora de criar os casos de teste, para isso, será utilizado UnitTest. O teste será feiro com base no modelo login.py, portanto, o teste será chamado test_login.py
-
-### Imports
-Como base para o teste, será importado:
-- webdriver do próprio selenium
-- format de controller
-- página de model, no caso login
-- unittest.
-
-```python
-from selenium import webdriver
-from controller import format
-from model import P01_Login
-import unittest
-```
-
-### UnitTest
-Por padrão o unitTest possui as funções setUp e tearDown, elas são chamadas para cada função de teste criada na classe test do unittest. setUp é chamada antes do teste e tearDown após o teste. Para o projeto, essas duas funções foram programadas para:
-
-- **setUp**: Responsável por definir o driver e abrir o navegador na página inicial da Netflix.
-- **tearDown**: Fechar a página web.
-
-```python
-class test(unittest.TestCase):
-    def setUp(self):
-        self.driver = webdriver.Chrome('C:\Program Files (x86)\chromedriver.exe')
-        self.driver.get('https://www.netflix.com/br-en/')
-
-    # Adicionar aqui funções de teste, entre setUp e tearDown.
-
-    def tearDown(self):
-        self.driver.quit()
-
-if __name__ == '__main__':
-    unittest.main()
-```
-
-Considerando que as funções de teste foram escritas, ao final do teste o UnitTest informa quantos testes passaram e quantatos falharam indicando qual teste deu erro.
-
-<div align="center">
-  <table>
-    <tr>
-      <td><p><b>PASS</b></p></td>
-      <td><p><b>FAIL</b></p></td>
-    </tr>
-    <tr>
-      <td><img src="https://user-images.githubusercontent.com/51168329/159310993-bce3a088-b03c-453c-a667-e2f8e425cf6d.png"></td>
-      <td><img src="https://user-images.githubusercontent.com/51168329/159309952-2e2b7576-1517-4aea-8118-4181d84931bc.png"></td>
-    </tr>
-  </table>
-</div>
-
-## 👩🏼‍💻 Cenários de Teste
-
-### CT01 - Acessar tela de Boas Vindas
-**Objetivo**
-- Acessar o site da Netflix e checar se é carregada a tela de Boas Vindas.
-
-**Código**
-```python
-    def test_CT01_AccessWelcome(self):
-        format.titleTest("CT01 - Acessar tela de Boas Vindas")
-        self.assertTrue(login.check_page_welcome(self.driver))
-```
-
-<div align="center">
-  <table>
-    <tr>
-      <th><p><b>Execução Assistida</b></p></th> 
-      <th><p><b>Log's</b></p></th>
-    </tr>
-    <tr>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159390569-8cfff750-2593-421f-9b83-dc04d3e375a0.gif" width=600px></th>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png" width=600px></th>
-    </tr>
-  </table>
-</div>
-
-### CT02 - Acessar tela de Login
-**Objetivo**
-- Acessar o site da Netflix, clicar em "Sign In" e checar se é carregada a tela de Login.
-
-**Código**
-```python
-    def test_CT02_AccessLogin(self):
-        format.titleTest("CT02 - Acessar tela de login")
-        login.click_signin_welcome(self.driver)
-        self.assertTrue(login.check_page_login(self.driver))
-```
-
-<div align="center">
-  <table>
-    <tr>
-      <th><p><b>Execução Assistida</b></p></th> 
-      <th><p><b>Log's</b></p></th>
-    </tr>
-    <tr>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159391105-1be2aa4f-1808-48b6-8cd0-5c4ef811b470.gif" width=600px></th>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png" width=600px></th>
-    </tr>
-  </table>
-</div>
-
-### CT03 - Senha Inválida
-**Objetivo**
-- Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo um e-mail válido e senha inválida no site, checar se a mensagem referente a senha errada é apresentada.
-
-**Código**
-```python
-    def test_CT03_InvalidPassword(self):
-        format.titleTest("CT03 - Senha inválida")
-        login.click_signin_welcome(self.driver)
-        login.set_email(self.driver, 'teste@gmail.com')
-        login.set_password(self.driver, 'Teste@1234')
-        login.click_signin_login(self.driver)
-        self.assertTrue(login.check_error_passwordInvalid(self.driver))
-```
-
-<div align="center">
-  <table>
-    <tr>
-      <th><p><b>Execução Assistida</b></p></th> 
-      <th><p><b>Log's</b></p></th>
-    </tr>
-    <tr>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159392417-3f95dfeb-8e5d-45d6-8dae-6b55e0d0c963.gif" width=600px></th>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159393494-7d307bbe-d090-473f-b426-68631896d391.png" width=600px></th>
-    </tr>
-  </table>
-</div>
-
-### CT04 - Usuário Inválido
-**Objetivo**
-- Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo e-mail e senha com dados inexistente no site, checar se a mensagem de que o usuário não existe é apresentada.
-
-**Código**
-```python
-    def test_CT04_InvalidAccount(self):
-        format.titleTest("CT04 - Usuário inválido")
-        login.click_signin_welcome(self.driver)
-        login.set_email(self.driver, 'testeSelenium@gmail.com')
-        login.set_password(self.driver, 'Teste@1234')
-        login.click_signin_login(self.driver)
-        self.assertTrue(login.check_error_userInvalid(self.driver))
-```
-
-<div align="center">
-  <table>
-    <tr>
-      <th><p><b>Execução Assistida</b></p></th> 
-      <th><p><b>Log's</b></p></th>
-    </tr>
-    <tr>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159392369-420cc93b-d050-49ca-8fc1-a2dff3a1937e.gif" width=600px></th>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png" width=600px></th>
-    </tr>
-  </table>
-</div>
-                                                                                                             
-### CT05 - Usuário Válido
-**Objetivo**
-- Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo e-mail e senha com dados existentes no site e clicando em "Sign In", checar se a tela de Perfis é carregada.
-
-**Código**
-```python
-    def test_CT05_ValidUser(self):
-        format.titleTest("CT05 - Usuário Válido")
-        login.click_signin_welcome(self.driver)
-
-        email = input('Informe um e-mail váido: ')
-        senha = input('Informe uma senha válida: ')
-
-        print()
-
-        login.set_email(self.driver, email)
-        login.set_password(self.driver, senha)
-        login.click_signin_login(self.driver)
-        self.assertTrue(login.check_page_profiles(self.driver))
-```
-
-<div align="center">
-  <table>
-    <tr>
-      <th><p><b>Execução Assistida</b></p></th> 
-      <th><p><b>Log's</b></p></th>
-    </tr>
-    <tr>
-      <th><img src="https://user-images.githubusercontent.com/51168329/188284644-58c144c0-7ab3-47f6-8496-a0a9e804939f.gif" width=600px></th>
-      <th>
-      <p>[PASS] Log quando usuário correto</p>
-      <img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png" width=600px>
-      <p>[FAIL] Log quando usuário incorreto</p>
-      <img src="https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png" width=600px>
-      </th>
-    </tr>
-  </table>
-</div>
+Em desenvolvimento

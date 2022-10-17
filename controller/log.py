@@ -1,6 +1,6 @@
 import logging
 log_format = "\33[37m[ %(levelname)s ] %(asctime)s :: %(name)s :: %(module)s :: %(message)s\33[1m"
-logging.basicConfig(format=log_format, level=logging.INFO, filemode='w')
+# logging.basicConfig(format=log_format, level=logging.ERROR, filemode='w')
 
 
 def degub(message):
