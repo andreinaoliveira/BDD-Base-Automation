@@ -361,7 +361,7 @@ Funcionalidade: Tela de Login
     </tr>
     <tr>
       <th><img src="https://user-images.githubusercontent.com/51168329/159390569-8cfff750-2593-421f-9b83-dc04d3e375a0.gif" width=600px></th>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/196761790-bf031afe-2d2e-4114-b268-1d3d33a1490a.png" width=600px></th>
     </tr>
   </table>
 </div>
@@ -387,7 +387,7 @@ Funcionalidade: Tela de Login
     </tr>
     <tr>
       <th><img src="https://user-images.githubusercontent.com/51168329/159391105-1be2aa4f-1808-48b6-8cd0-5c4ef811b470.gif" width=600px></th>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/196761619-d5df5f02-0edc-4ad0-a351-e2df8b02f840.png" width=600px></th>
     </tr>
   </table>
 </div>
@@ -422,7 +422,7 @@ Funcionalidade: Tela de Login
     </tr>
     <tr>
       <th><img src="https://user-images.githubusercontent.com/51168329/159392417-3f95dfeb-8e5d-45d6-8dae-6b55e0d0c963.gif" width=600px></th>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159393494-7d307bbe-d090-473f-b426-68631896d391.png" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/196761397-600ed194-01d7-416f-9dd2-8f49fc51981c.png" width=600px></th>
     </tr>
   </table>
 </div>
@@ -457,7 +457,7 @@ Funcionalidade: Tela de Login
     </tr>
     <tr>
       <th><img src="https://user-images.githubusercontent.com/51168329/159392369-420cc93b-d050-49ca-8fc1-a2dff3a1937e.gif" width=600px></th>
-      <th><img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/196760908-cd60a940-82cc-4101-b82a-c263296ca901.png" width=600px></th>
     </tr>
   </table>
 </div>
@@ -490,10 +490,7 @@ Funcionalidade: Tela de Login
     <tr>
       <th><img src="https://user-images.githubusercontent.com/51168329/188284644-58c144c0-7ab3-47f6-8496-a0a9e804939f.gif" width=600px></th>
       <th>
-      <p>[PASS] Log quando usuário correto</p>
-      <img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png" width=600px>
-      <p>[FAIL] Log quando usuário incorreto</p>
-      <img src="https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png" width=600px>
+      <img src="https://user-images.githubusercontent.com/51168329/196760684-c2a86e75-c1dc-4ea6-9e14-0565690c6ed1.png" width=600px>
       </th>
     </tr>
   </table>
