@@ -7,7 +7,7 @@ Funcionalidade: Tela de Login
 
   Cenário: CT01 - Acessar tela de Boas Vindas
     Então carregar tela de boas vindas
-    E fechar navegador
+      E fechar navegador
 
   Cenário: CT02 - Acessar tela de login
     Quando clicar em Login da tela de Boas Vindas

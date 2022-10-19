@@ -10,9 +10,11 @@
 </div>
 
 # 💬 Sobre
-Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e UnitTest e com a estrutura organizacional CMT (Controller Model Test), uma adaptação do MVC.
+Base para automação de testes utilizando a linguagem Python com as tecnologias do Selenium WebDriver e Behave e com a 
+estrutura organizacional CMT (Controller Model Test), uma adaptação do MVC.
 
-Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix. para cobrir os seguintes cenários de teste:
+Para exemplificar o funcionamento da base será automatizado a tela de login do site Netflix para cobrir 
+os seguintes cenários de teste:
 - CT01 - Acessar tela de Boas Vinda
 - CT02 - Acessar tela de Login
 - CT03 - Senha Inválida
@@ -23,7 +25,6 @@ Para exemplificar o funcionamento da base será automatizado a tela de login do 
 - <a href="#-instalação">Instalação</a>
 - <a href="#-desenvolvimento">Desenvolvimento</a>
   - <a href="#-controller">Controller</a>
-    - <a href="#formatpy">/fortmat.py</a>
     - <a href="#logpy">/log.py</a>
     - <a href="#webdriverpy">/webdriver.py</a>
       - <a href="#__code">Code</a>
@@ -45,7 +46,7 @@ Para exemplificar o funcionamento da base será automatizado a tela de login do 
 **Projeto**
 
 ```
-git clone https://github.com/andreinaoliveira/QA-Base-Automation.git
+git clone https://github.com/andreinaoliveira/BDD-Base-Automation.git
 ```
 
 **Dependencias**
@@ -65,7 +66,10 @@ pip install webdriver-manager
 
 ### /log.py
 
-Importa a biblioteca de loggin e formata a mensagem de log. Nesse arquivo é criado as funções debug(), info() e error(). Cada função recebe a mensagem que será enviada como log. Essas funções são chamadas em controller/webdriver. A linha referente a basic config está por padrão comentada para evitar poluição visual no terminal. Contudo, quando houver erros, os logs de erro serão chamados.
+Importa a biblioteca de loggin e formata a mensagem de log. Nesse arquivo é criado as funções debug(), info() e error(). 
+Cada função recebe a mensagem que será enviada como log. Essas funções são chamadas em controller/webdriver. 
+<br><br>A linha referente a basic config está por padrão comentada para evitar poluição visual no terminal. 
+Contudo, quando houver erros, os logs serão apresentados.
 
 ```python
 import logging
@@ -89,7 +93,8 @@ Em webdriver.py é criada a classe Element com os seguintes atribuitos e importa
 - driver: recebe o webdriver que será criado apenas no teste.
 - name: nome do elemento ex.: Botão Sign In. O nome será enviado apenas nos log's. 
 - element: Ao ser encontrado, o elemento é salvo nesse atributo.
-- as_Code_Type...: É a referência do elemento. É necessário atribuir valor a um dos itens para poder usar as funções da classe. 
+- as_Code_Type...: É a referência do elemento. É necessário atribuir valor a um dos itens para 
+poder usar as funções da classe. 
 
 ```python
 import os
@@ -116,12 +121,17 @@ class Element:
         self.as_8_XPATH = None
 ```
 
-As funções da classe ao serem chamadas (find, click e set), executará as ações e retornará [True] ou [False] de acordo com o sucesso ou não da atividade. Portanto, além de executar a ação você poderá comparar o resultado, por exemplo, checar se retornou True, ou seja, checar se a ação foi executada com sucesso.
+As funções da classe ao serem chamadas (find, click e set), executará as ações e retornará [True] ou [False] de acordo 
+com o sucesso ou não da atividade. Portanto, além de executar a ação você poderá comparar o resultado, por exemplo, 
+checar se retornou True, ou seja, checar se a ação foi executada com sucesso.
 
 ### __Code
 
-A função é chamada na função anterior, find(). Recebe um valor inteiro na variável code, o valor está no range de 1 a 8 e se refere ao tipo de referência do elemento (id, class etc.) o código é o mesmo do atributo as_Code_Type da classe. Exemplo, instanciando a classe como as_1_ID o code da função deve ser _ code(1) para buscar por ID.
-O ideal é que a função seja chamada apenas pelo find(), nunca diretamente.
+A função é chamada na função find(). Recebe um valor inteiro por parâmetro na variável code, o valor está no range de 
+1 a 8 e se refere ao tipo de referência do elemento (id, class etc.). <br><br>O código é o mesmo do atributo 
+as_Code_Type da classe. 
+Exemplo, instanciando a classe como as_1_ID o code da função deve ser _ code(1) para buscar por ID.
+<br><br>O ideal é que a função seja chamada apenas pelo find(), nunca diretamente.
 
 ```python
     def _code(self, code):
@@ -220,15 +230,18 @@ O ideal é que a função seja chamada apenas pelo find(), nunca diretamente.
 ```
 
 ## 🔧 Model
-Modelo armazena todas as páginas de um sistema web em aquivos .py diferentes. Cada arquivo possui uma classe que se refere a página web em questão. O ideal é que os principais elementos da página sejam instanciados nessa classe herdando da classe Element de controller/webdriver. Para exemplificar, criamos o modelo da página de login da Netflix (login.py)
+Modelo armazena todas as páginas de um sistema web em aquivos .py diferentes. Cada arquivo possui uma classe que se 
+refere a página web em questão. O ideal é que os principais elementos da página sejam instanciados nessa classe 
+herdando da classe Element de controller/webdriver. Para exemplificar, criamos o modelo da página de 
+login da Netflix (login.py)
 
 Como atribuito possuir:
 - driver
 
 As funções da página são divididas em: 
-- Check: Checa se está na página, checa se alguma mensagem de erro é apresentada etc.
-- Click: realiza o clique em qualquer elemento da página.
-- Set: Insere alguma informação na página.
+- **Check**: Checa se está na página, checa se alguma mensagem de erro é apresentada etc.
+- **Click**: realiza o clique em qualquer elemento da página.
+- **Set**: Insere alguma informação na página.
 
 ### Check
 1. Instancia o elemento passando o driver e o nome do elemento.
@@ -267,4 +280,221 @@ As funções da página são divididas em:
 ```
 
 ## 🧪 Test
-Em desenvolvimento
+Onde os testes de fato irão ocorrer. Após controller ser escrito suportando as instâncias da página em model chega a 
+hora de criar os casos de teste, para isso, será utilizado Cucumber para escrever os cenários e Behave para interpretar 
+a sintaxe do Gherkin
+
+### Feature (Cucumber)
+Dentro da pasta teste haverá arquivos .feature que representam o caso de teste. O arquivo refere-se a ferramenta 
+Cucumber e está pronto para receber cenários de teste na sintaxe do Gherkin.
+
+```Gherkin
+# language: pt
+Funcionalidade: Tela de Login
+Contexto:
+  Dado acesso ao Google Chrome
+  E acesso à Netflix
+Cenário: CT02 - Acessar tela de login
+  Quando clicar em Login da tela de Boas Vindas
+  Então carregar tela de Login
+  E fechar navegador
+```
+
+### Steps (Behave)
+Dentro de Steps estará contido o real procedimento para a realização dos testes das features.
+
+Quanto a importação, será necessário a importação do behave para interpretar comandos do gherkin além de alguns
+elementos do selenium para identificação do driver. Para gerar a conexão dos cenários de teste com os elementos da tela
+será importado de modelo a página correspondente ao teste. No caso, como será testado elementos de Login será importado
+a página login contida em model.
+```python
+from behave import *
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from model.P01_Login import Login
+```
+
+Após a importação poderá ser escrito as ações referente ao passo definido na feature.
+
+```python
+@when(u'clicar em Login da tela de Boas Vindas')
+def clicar_login_welcome(context):
+    assert context.login.click_signin_welcome() is True
+```
+
+
+
+## 👩🏼‍💻 Cenários de Teste
+
+
+**Comando para Execução dos cenários de teste** 
+
+```behave .\test\login.feature```
+
+**Funcionalidade e Contexto**
+```Gherkin
+# language: pt
+Funcionalidade: Tela de Login
+  Contexto:
+    Dado acesso ao Google Chrome
+    E acesso à Netflix
+```
+
+### CT01 - Acessar tela de Boas Vindas
+**Objetivo**
+- Acessar o site da Netflix e checar se é carregada a tela de Boas Vindas.
+
+**Código**
+```Gherkin
+# language: pt
+  Cenário: CT01 - Acessar tela de Boas Vindas
+    Então carregar tela de boas vindas
+      E fechar navegador
+```
+
+<div align="center">
+  <table>
+    <tr>
+      <th><p><b>Execução Assistida</b></p></th> 
+      <th><p><b>Log's</b></p></th>
+    </tr>
+    <tr>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159390569-8cfff750-2593-421f-9b83-dc04d3e375a0.gif" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159302476-1559f447-e745-46a7-a02d-1aedcdf52e2b.png" width=600px></th>
+    </tr>
+  </table>
+</div>
+
+### CT02 - Acessar tela de Login
+**Objetivo**
+- Acessar o site da Netflix, clicar em "Sign In" e checar se é carregada a tela de Login.
+
+**Código**
+```Gherkin
+# language: pt
+  Cenário: CT02 - Acessar tela de login
+    Quando clicar em Login da tela de Boas Vindas
+    Então carregar tela de Login
+      E fechar navegador
+```
+
+<div align="center">
+  <table>
+    <tr>
+      <th><p><b>Execução Assistida</b></p></th> 
+      <th><p><b>Log's</b></p></th>
+    </tr>
+    <tr>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159391105-1be2aa4f-1808-48b6-8cd0-5c4ef811b470.gif" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159303621-08b4cb87-f407-438b-983c-8aa0acd6e324.png" width=600px></th>
+    </tr>
+  </table>
+</div>
+
+### CT03 - Senha Inválida
+**Objetivo**
+- Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo um e-mail válido e senha inválida no site, checar se a mensagem referente a senha errada é apresentada.
+
+**Código**
+```Gherkin
+# language: pt
+  Esquema do Cenário: CT03 - Senha inválida
+    Quando clicar em Login da tela de Boas Vindas
+      E inserir e-mail válido "<email>"
+      Mas inserir senha inválida "<senha>"
+      E clicar em Login
+    Então apresentar erro de senha inválida
+      E fechar navegador
+    Exemplos:
+      # Primeiro exemplo a senha está realmente inválida
+      # e no segundo exemplo o usuário não existe
+      | email                  | senha      |
+      | teste@gmail.com        | Teste@1234 |
+      | testeGherkin@gmail.com | Teste@1234 |
+```
+
+<div align="center">
+  <table>
+    <tr>
+      <th><p><b>Execução Assistida</b></p></th> 
+      <th><p><b>Log's</b></p></th>
+    </tr>
+    <tr>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159392417-3f95dfeb-8e5d-45d6-8dae-6b55e0d0c963.gif" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159393494-7d307bbe-d090-473f-b426-68631896d391.png" width=600px></th>
+    </tr>
+  </table>
+</div>
+
+### CT04 - Usuário Inválido
+**Objetivo**
+- Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo e-mail e senha com dados inexistente no site, checar se a mensagem de que o usuário não existe é apresentada.
+
+**Código**
+```Gherkin
+# language: pt
+  Esquema do Cenário: CT04 - Usuário inválido
+    Quando clicar em Login da tela de Boas Vindas
+      Mas inserir e-mail inválido "<email>"
+        E inserir senha inválida "<senha>"
+      E clicar em Login
+    Então apresentar erro de usuário inválido
+      E fechar navegador
+    Exemplos:
+    # Primeiro exemplo o usuário existe porém está com senha inválida
+    # e no segundo exemplo o usuário realmente não existe
+    | email                  | senha      |
+    | teste@gmail.com        | Teste@1234 |
+    | testeGherkin@gmail.com | Teste@1234 |
+```
+
+<div align="center">
+  <table>
+    <tr>
+      <th><p><b>Execução Assistida</b></p></th> 
+      <th><p><b>Log's</b></p></th>
+    </tr>
+    <tr>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159392369-420cc93b-d050-49ca-8fc1-a2dff3a1937e.gif" width=600px></th>
+      <th><img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png" width=600px></th>
+    </tr>
+  </table>
+</div>
+                                                                                                             
+### CT05 - Usuário Válido
+**Objetivo**
+- Dado o acesso ao site da Netflix e clicado em "Sign In" preenchendo e-mail e senha com dados existentes no site e clicando em "Sign In", checar se a tela de Perfis é carregada.
+
+**Código**
+```Gherkin
+# language: pt
+  Esquema do Cenário: CT05 - Usuário Válido
+    Quando clicar em Login da tela de Boas Vindas
+      E inserir e-mail válido "<email>"
+      E inserir senha válida "<senha>>"
+      E clicar em Login
+    Então realizar Login com sucesso
+      E fechar navegador
+    Exemplos:
+      | email            | senha      |
+      | valido@gmail.com | valido     |
+```
+
+<div align="center">
+  <table>
+    <tr>
+      <th><p><b>Execução Assistida</b></p></th> 
+      <th><p><b>Log's</b></p></th>
+    </tr>
+    <tr>
+      <th><img src="https://user-images.githubusercontent.com/51168329/188284644-58c144c0-7ab3-47f6-8496-a0a9e804939f.gif" width=600px></th>
+      <th>
+      <p>[PASS] Log quando usuário correto</p>
+      <img src="https://user-images.githubusercontent.com/51168329/159305627-f38c896c-b76c-40c5-93be-1a6bcdf0d134.png" width=600px>
+      <p>[FAIL] Log quando usuário incorreto</p>
+      <img src="https://user-images.githubusercontent.com/51168329/159304888-cfd893cd-a66e-403d-b263-a09af52e4003.png" width=600px>
+      </th>
+    </tr>
+  </table>
+</div>
